@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Str;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Str;
 
 if (! function_exists('user') && class_exists('App\\Models\\User')) {
     function user(): ?\App\Models\User
@@ -31,8 +31,8 @@ if (! function_exists('authorize')) {
         static $class = null;
 
         if ($class === null) {
-            $class = new class {
-               use AuthorizesRequests;
+            $class = new class() {
+                use AuthorizesRequests;
             };
         }
 
