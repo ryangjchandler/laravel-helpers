@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace RyanChandler\LaravelHelpers;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use RyanChandler\LaravelHelpers\Commands\LaravelHelpersCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelHelpersServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-helpers')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_laravel-helpers_table')
+            ->hasCommand(LaravelHelpersCommand::class);
     }
 }
