@@ -5,25 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/laravel-helpers/Check%20&%20fix%20styling?label=code%20style)](https://github.com/ryangjchandler/laravel-helpers/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/laravel-helpers.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-helpers)
 
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
-
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this laravel-helpers
-2. Run "./configure-laravel-helpers.sh" to run a script that will replace all placeholders throughout all the files
-3. Remove this block of text.
-4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-helpers.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-helpers)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This package includes some of the helper functions that I tend to use in all of my projects.
 
 ## Installation
 
@@ -32,31 +14,53 @@ You can install the package via composer:
 ```bash
 composer require ryangjchandler/laravel-helpers
 ```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="RyanChandler\LaravelHelpers\LaravelHelpersServiceProvider" --tag="laravel-helpers-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="RyanChandler\LaravelHelpers\LaravelHelpersServiceProvider" --tag="laravel-helpers-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
 ```
 
 ## Usage
 
+### `user`
+
+Returns the current user, or null depending on authentication status.
+
+> This function assumes that your `User` model is found inside of `app/Models` and will not be registered if that class doesn't exist.
+
 ```php
-$laravel-helpers = new RyanChandler\LaravelHelpers();
-echo $laravel-helpers->echoPhrase('Hello, Spatie!');
+$user = user();
+```
+
+### `selected`
+
+Can be used to output a `selected` attribute conditionally.
+
+```blade
+<select>
+    <option value="option" {{ selected($value === 'option') }}></option>
+</select>
+```
+
+You can also change the attribute that is returned. This is useful when you want to use it on checkboxes.
+
+```blade
+<input type="checkbox" name="remember" {{ selected($remember, 'checked') }} />
+```
+
+### `authorize`
+
+Identical to Laravel's `$this->authorize()` method provided by the `AuthorizesRequests` trait.
+
+```php
+public function index()
+{
+    authorize('viewAny', Post::class);
+}
+```
+
+### `url_shorten`
+
+Removes everything before `://` in a URL for use as link text.
+
+```blade
+<a href="{{ $url }}">{{ url_shorten($url) }}</a>
 ```
 
 ## Testing
