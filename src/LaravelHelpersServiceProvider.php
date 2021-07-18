@@ -16,10 +16,6 @@ class LaravelHelpersServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-helpers')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-helpers_table')
-            ->hasCommand(LaravelHelpersCommand::class);
+            ->name('laravel-helpers');
     }
 }
