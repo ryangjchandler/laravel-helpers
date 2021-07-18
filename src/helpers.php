@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 use Illuminate\Support\Str;
 use Illuminate\Auth\Access\Response;
@@ -47,5 +46,3 @@ if (! function_exists('url_shorten')) {
         return Str::after($url, '://');
     }
 }
-=======
->>>>>>> a645368b9bd760034de7a62ddd46dc0ccc75e038
