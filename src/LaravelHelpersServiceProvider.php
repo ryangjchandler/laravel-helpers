@@ -2,7 +2,6 @@
 
 namespace RyanChandler\LaravelHelpers;
 
-use RyanChandler\LaravelHelpers\Commands\LaravelHelpersCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
