@@ -62,6 +62,24 @@ Removes everything before `://` in a URL for use as link text.
 <a href="{{ $url }}">{{ url_shorten($url) }}</a>
 ```
 
+This is also available as a `Str::shortenUrl` method, applied via a macro.
+
+```php
+$shortened = Str::shortenUrl($url);
+```
+
+### `Request::collect()`
+
+This behaves exactly the same as `Request::all()`, except it returns an instance of `\Illuminate\Support\Collection`.
+
+```php
+public function store(Request $request)
+{
+    $collection = $request->collect();
+    $pluckedCollection = $request->collect('name', 'email', 'age');
+}
+```
+
 ## Testing
 
 ```bash
