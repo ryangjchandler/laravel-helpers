@@ -4,6 +4,7 @@ namespace RyanChandler\LaravelHelpers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -27,6 +28,10 @@ class LaravelHelpersServiceProvider extends PackageServiceProvider
 
         Str::macro('shortenUrl', function ($url) {
             return url_shorten($url);
+        });
+
+        Blade::directive('selected', function ($expression) {
+            return "<?php echo \selected({$expression}); ?>";
         });
     }
 }
