@@ -80,6 +80,24 @@ public function store(Request $request)
 }
 ```
 
+### `@selected`
+
+This is a Blade directive that uses the `selected` helper function.
+
+```blade
+<input type="checkbox" name="remember" @selected($remember, 'checked') />
+```
+
+### `@disabled`
+
+This is a Blade directive that uses the `selected` helper function.
+
+```blade
+<select>
+    <option @disabled($disabled)>Helpers</option>
+</select>
+```
+
 ## Testing
 
 ```bash
