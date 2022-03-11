@@ -19,12 +19,6 @@ class LaravelHelpersServiceProvider extends PackageServiceProvider
 
     public function packageBooted()
     {
-        Blade::directive('selected', function ($expression) {
-            return "<?php echo \selected({$expression}); ?>";
-        });
-
-        Blade::directive('disabled', function ($expression) {
-            return "<?php echo \selected({$expression}, 'disabled'); ?>";
-        });
+        //
     }
 }
