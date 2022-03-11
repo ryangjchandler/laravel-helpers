@@ -2,7 +2,6 @@
 
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Str;
 use Illuminate\View\ComponentAttributeBag;
 
 if (! function_exists('user') && class_exists('App\\Models\\User')) {
