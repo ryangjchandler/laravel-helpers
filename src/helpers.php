@@ -49,10 +49,3 @@ if (! function_exists('authorize')) {
         return $class->authorize($ability, $arguments);
     }
 }
-
-if (! function_exists('url_shorten')) {
-    function url_shorten(string $url)
-    {
-        return Str::after($url, '://');
-    }
-}
