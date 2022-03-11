@@ -33,7 +33,7 @@ if (! function_exists('authorize')) {
         static $class = null;
 
         if ($class === null) {
-            $class = new class() {
+            $class = new class () {
                 use AuthorizesRequests;
             };
         }
