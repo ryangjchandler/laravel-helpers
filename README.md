@@ -27,22 +27,6 @@ Returns the current user, or null depending on authentication status.
 $user = user();
 ```
 
-### `selected`
-
-Can be used to output a `selected` attribute conditionally.
-
-```blade
-<select>
-    <option value="option" {{ selected($value === 'option') }}></option>
-</select>
-```
-
-You can also change the attribute that is returned. This is useful when you want to use it on checkboxes.
-
-```blade
-<input type="checkbox" name="remember" {{ selected($remember, 'checked') }} />
-```
-
 ### `authorize`
 
 Identical to Laravel's `$this->authorize()` method provided by the `AuthorizesRequests` trait.
@@ -54,48 +38,17 @@ public function index()
 }
 ```
 
-### `url_shorten`
+### `attributes()` and `@attributes`
 
-Removes everything before `://` in a URL for use as link text.
+Laravel 9 introduces new directives for checked, disabled and selected. In some cases though, you might want to output a variety of different attributes using PHP values.
 
-```blade
-<a href="{{ $url }}">{{ url_shorten($url) }}</a>
-```
-
-This is also available as a `Str::shortenUrl` method, applied via a macro.
-
-```php
-$shortened = Str::shortenUrl($url);
-```
-
-### `Request::collect()`
-
-This behaves exactly the same as `Request::all()`, except it returns an instance of `\Illuminate\Support\Collection`.
-
-```php
-public function store(Request $request)
-{
-    $collection = $request->collect();
-    $pluckedCollection = $request->collect('name', 'email', 'age');
-}
-```
-
-### `@selected`
-
-This is a Blade directive that uses the `selected` helper function.
+`attributes()` and the `@attributes()` directive can help with that:
 
 ```blade
-<input type="checkbox" name="remember" @selected($remember, 'checked') />
-```
-
-### `@disabled`
-
-This is a Blade directive that uses the `selected` helper function.
-
-```blade
-<select>
-    <option @disabled($disabled)>Helpers</option>
-</select>
+<button @attributes([
+    'disabled' => ! $user->can('click'),
+])>
+</button>
 ```
 
 ## Testing
