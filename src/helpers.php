@@ -3,6 +3,7 @@
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
+use Illuminate\View\ComponentAttributeBag;
 
 if (! function_exists('user') && class_exists('App\\Models\\User')) {
     function user(): ?\App\Models\User
@@ -19,6 +20,13 @@ if (! function_exists('selected')) {
         }
 
         return null;
+    }
+}
+
+if (! function_exists('attributes')) {
+    function attributes(array $attributes = []): ComponentAttributeBag
+    {
+        return new ComponentAttributeBag($attributes);
     }
 }
 
