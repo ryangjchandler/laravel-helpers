@@ -1,13 +1,21 @@
 <?php
 
 use Illuminate\Auth\Access\Response;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\ComponentAttributeBag;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 if (! function_exists('user') && class_exists('App\\Models\\User')) {
     function user(): ?\App\Models\User
     {
         return auth()->user();
+    }
+}
+
+if (! function_exists('route_is')) {
+    function route_is(string $route): bool
+    {
+        return Route::currentRouteName() === $route;
     }
 }
 
