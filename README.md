@@ -27,6 +27,14 @@ Returns the current user, or null depending on authentication status.
 $user = user();
 ```
 
+### `route_is`
+
+Check if the current route name matches the provided string.
+
+```php
+route_is('dashboard.index');
+```
+
 ### `authorize`
 
 Identical to Laravel's `$this->authorize()` method provided by the `AuthorizesRequests` trait.
