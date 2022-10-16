@@ -3,6 +3,7 @@
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\HtmlString;
 use Illuminate\View\ComponentAttributeBag;
 
 if (! function_exists('user') && class_exists('App\\Models\\User')) {
@@ -54,5 +55,12 @@ if (! function_exists('authorize')) {
         }
 
         return $class->authorize($ability, $arguments);
+    }
+}
+
+if (! function_exists('mdash')) {
+    function mdash(): HtmlString
+    {
+        return new HtmlString('&mdash;');
     }
 }

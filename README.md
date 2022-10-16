@@ -59,6 +59,16 @@ Laravel 9 introduces new directives for checked, disabled and selected. In some 
 </button>
 ```
 
+### `mdash()`
+
+It's quite common to output an `&mdash;` in your HTML code when it isn't present. Doing this with regular Blade `{{ }}` tags can be annoying though since `&mdash;` needs to be output in "raw" mode.
+
+This function uses `HtmlString` to return a "safe" wrapper around the HTML entity which allows it to be output without being escaped.
+
+```blade
+{{ $post->published_at?->format('d/m/Y') ?? mdash() }}
+```
+
 ## Testing
 
 ```bash
